@@ -10,11 +10,16 @@
         android:id="@+id/frame_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/page_color"
+        android:paddingStart="50px"
+        android:paddingLeft="50px"
+        android:paddingTop="50px"
+        android:paddingEnd="50px"
+        android:paddingRight="50px"
         app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/page_color" >
+        app:layout_constraintTop_toTopOf="parent">
 
     </FrameLayout>
 

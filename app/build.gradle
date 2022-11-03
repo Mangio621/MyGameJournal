@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -49,4 +50,5 @@ dependencies {
     implementation 'com.github.kittinunf.fuel:fuel-android:2.3.1' //Android
     implementation 'com.github.kittinunf.fuel:fuel-gson:2.3.1' //Fuel Gson
     implementation 'com.google.code.gson:gson:2.8.6' //Gson
+    implementation 'com.squareup.picasso:picasso:2.8'
 }

@@ -10,11 +10,14 @@
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/drawable/rounded_corner.xml" value="0.1215" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/drawable/rounded_corner_grey.xml" value="0.1215" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/drawable/rounded_corner_list.xml" value="0.4165" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/font/font_family.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/activity_main.xml" value="0.5" />
-        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_browse_page.xml" value="0.31354166666666666" />
-        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_journal_page.xml" value="0.31354166666666666" />
-        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_search_page.xml" value="0.5" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_browse_page.xml" value="0.5" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_journal_page.xml" value="0.5" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_public_game_detail_page.xml" value="0.33" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_search_page.xml" value="0.25" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/public_game_list_item.xml" value="0.4166666666666667" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/menu/bottom_nav.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/xml/network_security_config.xml" value="0.11614583333333334" />
       </map>
