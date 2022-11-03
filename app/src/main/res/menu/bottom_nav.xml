@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Browse"
+        android:id="@+id/browse"
+        android:icon="@drawable/ic_baseline_videogame_asset_24"/>
+    <item android:title="Search"
+        android:id="@+id/search"
+        android:icon="@drawable/ic_baseline_search_24"/>
+    <item android:title="Journal"
+        android:id="@+id/journal"
+        android:icon="@drawable/ic_baseline_bookmark_24"/>
+</menu>
