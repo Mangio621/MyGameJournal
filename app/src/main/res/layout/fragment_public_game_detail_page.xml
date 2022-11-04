@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/page_color"
     android:elevation="5dp"
-    tools:context=".SearchPage">
+    tools:context=".PublicGameDetailPage">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -139,7 +139,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserratregular"
-                    android:text="If you have, add this game to your library and give a review on it."
+                    android:text="If you've finished or are in the middle of playing this game, add this game to your journal to keep track of it and leave your review on it."
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="8pt" />

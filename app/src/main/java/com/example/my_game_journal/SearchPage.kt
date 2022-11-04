@@ -8,7 +8,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 
-class SearchPage : Fragment() {
+/**
+ * This fragment holds the functionality for the search page
+ */
+class SearchPage(private val fragmentNavigator: FragmentNavigator) : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,10 +26,11 @@ class SearchPage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val searchBtn = view.findViewById<Button>(R.id.searchBtn)
-        val searchText = view.findViewById<TextView>(R.id.searchInput).text
 
         searchBtn.setOnClickListener {
-
+            val searchText = view.findViewById<TextView>(R.id.searchInput).text
+            // Execute search for when the search button is pressed
+            fragmentNavigator.replaceFragment(SearchResultsPage(fragmentNavigator, searchText.toString()), true)
         }
 
         super.onViewCreated(view, savedInstanceState)

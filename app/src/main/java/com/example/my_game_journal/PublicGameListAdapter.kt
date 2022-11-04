@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import org.w3c.dom.Text
 
+/**
+ * The adapter class for the PublicGameList recycler view
+ */
 class PublicGameListAdapter(private val gameList: List<PublicGameInfo>, val gameClicked: (gameID: PublicGameInfo) -> Unit): RecyclerView.Adapter<PublicGameListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,13 +48,16 @@ class PublicGameListAdapter(private val gameList: List<PublicGameInfo>, val game
             } else {
                 releaseText.text = "Not Released Yet"
             }
+            // Asynchronously grab the jpg contents of the image and set it to the coverImage view
             if(game.cover != null) {
                 Picasso.get()
                     .load("https:" + game.getCoverImgUrlSpecificSize("t_cover_big"))
                     .into(coverImg)
             } else {
+                // If no cover, display the default icon asset
                 coverImg.setImageResource(R.drawable.ic_baseline_videogame_asset_24)
             }
+            // Call back to host page when an item in the list is pressed
             itemTouchZone.setOnClickListener {
                 gameClicked.invoke(game)
             }

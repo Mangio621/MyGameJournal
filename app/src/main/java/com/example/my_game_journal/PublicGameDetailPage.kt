@@ -20,16 +20,10 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
 /**
- * A simple [Fragment] subclass.
- * Use the [PublicGameDetailPage.newInstance] factory method to
- * create an instance of this fragment.
+ * This fragmant handles the functionality of displaying the detail view of a public game retrieved via the IGDB game endpoint
  */
 class PublicGameDetailPage(private val fragmentNavigator: FragmentNavigator, private val gameInfo: PublicGameInfo) : Fragment() {
-    // TODO: Rename and change types of parameters
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -51,11 +45,13 @@ class PublicGameDetailPage(private val fragmentNavigator: FragmentNavigator, pri
         val gameRating = view.findViewById<TextView>(R.id.publicGameRating)
         val addGameBtn = view.findViewById<Button>(R.id.addGameBtn)
 
+        // Asynchronously retrieve jpg content of the games cover url and set it to the gameCover ImageView
         if(gameInfo.cover != null) {
             Picasso.get()
                 .load("https:" + gameInfo.getCoverImgUrlSpecificSize("t_720p"))
                 .into(gameCover)
         } else {
+            // If the url doesn't exist, which for some games is the case, load in a default icon asset
             gameCover.setImageResource(R.drawable.ic_baseline_videogame_asset_24)
         }
         gameTitle.text = gameInfo.name
@@ -64,11 +60,14 @@ class PublicGameDetailPage(private val fragmentNavigator: FragmentNavigator, pri
         gamePlatforms.text = if(gameInfo.platforms != null) gameInfo.getStringListOfPlatforms() else "No platforms recorded"
         gameRating.text = if(gameInfo.rating != null) gameInfo.getWholeRating().toString() + "/100" else "This game has no reviews yet"
         val journalManager = JournalManager(activity as FragmentActivity)
+        // Check whether the game exists in the shared preferences. If it does, don't let the user re-add it.
         if(!journalManager.gamePersistentlyExists(gameInfo.id as Int)) {
             addGameBtn.setOnClickListener {
                 val timeFormatter = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+                // Get the current date to log when this game was added to the journal
                 val currentDate: String = timeFormatter.format(Date())
 
+                // Add a new game journal instance persistently for the user to later edit
                 journalManager.addToPersistentGameList(
                     JournalGameInfo(
                         gameInfo.id ?: 0,
@@ -77,13 +76,16 @@ class PublicGameDetailPage(private val fragmentNavigator: FragmentNavigator, pri
                         currentDate
                     )
                 )
-                fragmentNavigator.replaceFragment(JournalPage(fragmentNavigator))
+                fragmentNavigator.setBottomNavigationSelectedItem(R.id.journal)
+                // Navigate to the journal page
+                fragmentNavigator.replaceFragment(JournalPage(fragmentNavigator), true)
             }
         } else {
             addGameBtn.background.setTint(ContextCompat.getColor(activity as Activity, R.color.darker_grey))
             addGameBtn.text = "Game already added. Go To Your Journals?"
             addGameBtn.setOnClickListener {
-                fragmentNavigator.replaceFragment(JournalPage(fragmentNavigator))
+                fragmentNavigator.setBottomNavigationSelectedItem(R.id.journal)
+                fragmentNavigator.replaceFragment(JournalPage(fragmentNavigator), true)
             }
         }
         super.onViewCreated(view, savedInstanceState)

@@ -2,12 +2,12 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frame_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".JournalPage"
-    android:background="@color/page_color">
+    android:background="@color/page_color"
+    tools:context=".SearchResultsPage">
 
-    <!-- TODO: Update blank fragment layout -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -18,11 +18,11 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/journalTitle"
+                android:id="@+id/resultsTitle"
                 android:layout_width="700px"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserratsemibold"
-                android:text="Your Game Journals"
+                android:text="Search Results"
                 android:textColor="@color/white"
                 android:textSize="17pt"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -31,35 +31,53 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="50dp"
-                android:layout_height="53dp"
-                android:src="@drawable/ic_baseline_bookmark_24"
+                android:id="@+id/imageView2"
+                android:layout_width="85dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_baseline_search_24"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.93"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.120000005" />
+                app:layout_constraintVertical_bias="0.13999999" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/journalPageMsg"
+            android:id="@+id/resultsQuery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserratregular"
+            android:text="For "
+            android:textColor="@color/white"
+            android:textSize="9pt" />
+
+        <TextView
+            android:id="@+id/resultsQueryResultMsg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserratregular"
             android:text=""
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/app_select"
             android:textSize="7pt" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/journalList"
+        <RelativeLayout
+            android:id="@+id/loadingPanel"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
-        </androidx.recyclerview.widget.RecyclerView>
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true" />
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/resultsList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </FrameLayout>

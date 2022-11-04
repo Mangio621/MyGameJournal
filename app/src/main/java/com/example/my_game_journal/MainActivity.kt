@@ -8,20 +8,21 @@ import java.io.*
 
 
 class MainActivity : AppCompatActivity() {
-
+    // Binding for access to the bottomNavigationView
     private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navigator: FragmentNavigator = FragmentNavigator(supportFragmentManager, R.id.frame_layout)
+        // Create a bottomNavigationView
+        val navigator: FragmentNavigator = FragmentNavigator(supportFragmentManager, R.id.frame_layout, binding.bottomNavigationView)
         navigator.replaceFragment(BrowsePage(navigator)) // Default Fragment (page on startup)
-
+        // When a navigation tab is pressed in the bottom menu, check which id is being pressed navigate accordingly
         binding.bottomNavigationView.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.browse -> navigator.replaceFragment(BrowsePage(navigator))
-                R.id.search -> navigator.replaceFragment(SearchPage())
+                R.id.search -> navigator.replaceFragment(SearchPage(navigator))
                 R.id.journal -> navigator.replaceFragment(JournalPage(navigator))
                 else -> {
                 }
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        // When the back button is pressed, navigate back a fragment via the backstack
         if (supportFragmentManager.backStackEntryCount > 0) {
             supportFragmentManager.popBackStack()
         } else {

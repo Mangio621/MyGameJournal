@@ -13,4 +13,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/darker_grey</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="hint" parent="Theme.AppCompat.Light">
+        <item name="android:textColorPrimary">#AAAAAA</item>
+        <item name="android:textColor">#AAAAAA</item>
+        <item name="android:fontFamily">@font/montserratregular</item>
+    </style>
 </resources>

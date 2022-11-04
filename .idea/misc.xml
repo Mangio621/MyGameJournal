@@ -14,10 +14,13 @@
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/font/font_family.xml" value="0.17685185185185184" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_browse_page.xml" value="0.5" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_journal_bottom_sheet.xml" value="0.37067122702009403" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_journal_delete_bottom_sheet.xml" value="0.33646857631466437" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_journal_game_detail_page.xml" value="0.3428815733219325" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_journal_page.xml" value="0.5" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_public_game_detail_page.xml" value="0.33" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_search_page.xml" value="0.25" />
+        <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/fragment_search_results_page.xml" value="0.3629756306113724" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/journal_game_list_item.xml" value="0.3629756306113724" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/layout/public_game_list_item.xml" value="0.4166666666666667" />
         <entry key="..\:/Users/colep/AndroidStudioProjects/MyGameJournal/app/src/main/res/menu/bottom_nav.xml" value="0.31354166666666666" />

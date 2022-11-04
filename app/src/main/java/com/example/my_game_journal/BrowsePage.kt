@@ -7,14 +7,13 @@ import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * A simple [Fragment] subclass.
- * Use the [BrowsePage.newInstance] factory method to
- * create an instance of this fragment.
+ * This fragment holds the browse page functionality
  */
 class BrowsePage(private val fragmentNavigator: FragmentNavigator) : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +31,11 @@ class BrowsePage(private val fragmentNavigator: FragmentNavigator) : Fragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Create an instance of the Api Manager
         val apiManager: ApiManager = ApiManager()
-        apiManager.fetchGameDetails("limit: 30") { gameList ->
-            if(gameList != null) {
+        // use apiManager to fetch rating desc ordered data and display 200
+        apiManager.fetchGameDetails("sort rating desc; where rating > 80; limit: 200") { gameList ->
+            // Get rid of loading animation
+            view.findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
+            if (gameList != null) {
                 val browseList = view.findViewById<RecyclerView>(R.id.browseList)
                 browseList.adapter = PublicGameListAdapter(gameList) { game ->
                     fragmentNavigator.addFragment(PublicGameDetailPage(fragmentNavigator, game))
