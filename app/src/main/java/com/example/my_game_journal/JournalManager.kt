@@ -21,18 +21,47 @@ class JournalManager(private val fragmentActivity: FragmentActivity) {
         return list
     }
 
-    fun addToPersistentGameList(gameInfo: JournalGameInfo) {
-        var list: List<JournalGameInfo>? = getPersistentGameList()
+    private fun writeListToPersistentData(mutableList: MutableList<JournalGameInfo>) {
+        val list = mutableList.toList()
+        val gson = Gson()
+        val json = gson.toJson(list)
+        prefEditor.putString(KEY_DATA, json)
+        prefEditor.commit()
+    }
+
+    private fun getMutableListOf(list: List<JournalGameInfo>?): MutableList<JournalGameInfo> {
         var mutableList: MutableList<JournalGameInfo> = mutableListOf()
         if(list != null) {
             mutableList = list.toMutableList()
         }
+        return mutableList
+    }
+
+    fun modifyPersistentGameInfo(newGameInfo: JournalGameInfo) {
+        val mutableList = getMutableListOf(getPersistentGameList())
+        val indexOfModifedGame = mutableList.indexOfFirst {
+            it.id == newGameInfo.id
+        }
+        mutableList[indexOfModifedGame] = newGameInfo
+        writeListToPersistentData(mutableList)
+    }
+
+    fun addToPersistentGameList(gameInfo: JournalGameInfo) {
+        val mutableList = getMutableListOf(getPersistentGameList())
         mutableList.add(gameInfo)
-        list = mutableList.toList()
-        val gson = Gson()
-        val json = gson.toJson(list)
-        Log.i("API", json)
-        prefEditor.putString(KEY_DATA, json)
-        prefEditor.commit()
+        writeListToPersistentData(mutableList)
+    }
+
+    fun gamePersistentlyExists(gameID: Int): Boolean {
+        var found = false
+        if(getPersistentGameList() != null) {
+            for(game in getPersistentGameList() as List<JournalGameInfo>) {
+                if(game.id == gameID) {
+                    found = true
+                    break
+                }
+            }
+        }
+        return found
     }
 }

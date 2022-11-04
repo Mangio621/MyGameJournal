@@ -22,7 +22,7 @@
                 android:layout_width="700px"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserratsemibold"
-                android:text="Your Game Journal"
+                android:text="Your Game Journals"
                 android:textColor="@color/white"
                 android:textSize="17pt"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class JournalPage : Fragment() {
+class JournalPage(private val fragmentNavigator: FragmentNavigator) : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -29,8 +29,9 @@ class JournalPage : Fragment() {
 
         if(journalList != null) {
             val journalRecyclerView = view.findViewById<RecyclerView>(R.id.journalList)
-            journalRecyclerView.adapter = JournalGameListAdapter(journalList) { game ->
-            }
+                journalRecyclerView.adapter = JournalGameListAdapter(journalList) { journal ->
+                    fragmentNavigator.replaceFragment(JournalGameDetailPage(journal), true)
+                }
             journalRecyclerView.layoutManager = LinearLayoutManager(context)
         }
         super.onViewCreated(view, savedInstanceState)

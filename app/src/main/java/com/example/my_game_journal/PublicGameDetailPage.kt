@@ -1,5 +1,6 @@
 package com.example.my_game_journal
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -10,9 +11,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import com.squareup.picasso.Picasso
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -57,11 +63,28 @@ class PublicGameDetailPage(private val fragmentNavigator: FragmentNavigator, pri
         gameReleaseDate.text = if(gameInfo.release_dates != null) gameInfo.getReadableReleaseDate() else "This game hasn't been released yet"
         gamePlatforms.text = if(gameInfo.platforms != null) gameInfo.getStringListOfPlatforms() else "No platforms recorded"
         gameRating.text = if(gameInfo.rating != null) gameInfo.getWholeRating().toString() + "/100" else "This game has no reviews yet"
+        val journalManager = JournalManager(activity as FragmentActivity)
+        if(!journalManager.gamePersistentlyExists(gameInfo.id as Int)) {
+            addGameBtn.setOnClickListener {
+                val timeFormatter = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
+                val currentDate: String = timeFormatter.format(Date())
 
-        addGameBtn.setOnClickListener {
-            val journalManager = JournalManager(activity as FragmentActivity)
-            journalManager.addToPersistentGameList(JournalGameInfo(gameInfo.id ?: 0, gameInfo.name ?: "", gameInfo.getCoverImgUrlSpecificSize("t_720p")))
-            fragmentNavigator.replaceFragment(JournalPage())
+                journalManager.addToPersistentGameList(
+                    JournalGameInfo(
+                        gameInfo.id ?: 0,
+                        gameInfo.name ?: "",
+                        gameInfo.getCoverImgUrlSpecificSize("t_720p"),
+                        currentDate
+                    )
+                )
+                fragmentNavigator.replaceFragment(JournalPage(fragmentNavigator))
+            }
+        } else {
+            addGameBtn.background.setTint(ContextCompat.getColor(activity as Activity, R.color.darker_grey))
+            addGameBtn.text = "Game already added. Go To Your Journals?"
+            addGameBtn.setOnClickListener {
+                fragmentNavigator.replaceFragment(JournalPage(fragmentNavigator))
+            }
         }
         super.onViewCreated(view, savedInstanceState)
     }

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gameInfoItem"
+    android:id="@+id/journalInfoItem"
     android:layout_width="match_parent"
 
     android:layout_height="wrap_content"
@@ -81,12 +81,12 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="5dp"
                     android:fontFamily="@font/montserratregular"
-                    android:text="Review Date"
+                    android:text="Time Added"
                     android:textColor="@color/white"
                     android:textSize="6pt" />
 
                 <TextView
-                    android:id="@+id/journalInfoDate"
+                    android:id="@+id/journalInfoTime"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_marginLeft="5dp"

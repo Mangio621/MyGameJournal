@@ -42,6 +42,7 @@
                     android:textColor="#FFFFFF"
                     android:textSize="8pt" />
 
+
                 <TextView
                     android:id="@+id/journalGameTitle"
                     android:layout_width="match_parent"
@@ -51,6 +52,26 @@
                     android:textAlignment="center"
                     android:textColor="#FFFFFF"
                     android:textSize="13pt" />
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserratregular"
+                    android:text="Time this journal was added"
+                    android:textAlignment="center"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8pt" />
+
+                <TextView
+                    android:id="@+id/journalTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserratregular"
+                    android:text="00/00/0000"
+                    android:textAlignment="center"
+                    android:textColor="@color/app_select"
+                    android:textSize="8pt" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -81,14 +102,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/darker_grey"
                         android:text="Finished" />
 
                     <Button
                         android:id="@+id/unfinishedBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:backgroundTint="@color/unfinished"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/darker_grey"
                         android:text="Unfinished" />
                 </LinearLayout>
 
@@ -112,6 +134,7 @@
                         android:textSize="12pt" />
 
                     <RatingBar
+                        android:id="@+id/journalGameRatingBar"
                         style="@style/Widget.AppCompat.RatingBar.Indicator"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -123,6 +146,15 @@
                         android:rating="0"
                         android:secondaryProgressTint="#00FFFFFF"
                         android:stepSize="0.1" />
+                    <TextView
+                        android:id="@+id/journalGameRating"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserratregular"
+                        android:text="0/100"
+                        android:textAlignment="center"
+                        android:textColor="@color/app_select"
+                        android:textSize="8pt" />
 
                 </LinearLayout>
 
@@ -138,12 +170,18 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:textColorHint="#AAAAAA">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/journalContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="hint" />
+                        android:textColor="@color/white"
+                        android:background="@color/darker_grey"
+                        android:elevation="10dp"
+                        android:fontFamily="@font/montserratregular"
+                        android:hint="Tap to edit your journal/review" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -154,6 +192,21 @@
                     android:text="Other Notes"
                     android:textColor="#FFFFFF"
                     android:textSize="12pt" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textColorHint="#AAAAAA">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/journalNoteContent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:background="@color/darker_grey"
+                        android:elevation="10dp"
+                        android:fontFamily="@font/montserratregular"
+                        android:hint="Tap to edit your notes/comments" />
+                </com.google.android.material.textfield.TextInputLayout>
 
 
                 <androidx.constraintlayout.widget.ConstraintLayout

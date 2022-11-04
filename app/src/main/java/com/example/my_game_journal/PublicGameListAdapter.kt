@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
 
 class PublicGameListAdapter(private val gameList: List<PublicGameInfo>, val gameClicked: (gameID: PublicGameInfo) -> Unit): RecyclerView.Adapter<PublicGameListAdapter.ViewHolder>() {
 

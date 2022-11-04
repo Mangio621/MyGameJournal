@@ -32,7 +32,7 @@ class BrowsePage(private val fragmentNavigator: FragmentNavigator) : Fragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Create an instance of the Api Manager
         val apiManager: ApiManager = ApiManager()
-        apiManager.fetchGameDetails("limit: 20") { gameList ->
+        apiManager.fetchGameDetails("limit: 30") { gameList ->
             if(gameList != null) {
                 val browseList = view.findViewById<RecyclerView>(R.id.browseList)
                 browseList.adapter = PublicGameListAdapter(gameList) { game ->

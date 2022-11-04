@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.browse -> navigator.replaceFragment(BrowsePage(navigator))
                 R.id.search -> navigator.replaceFragment(SearchPage())
-                R.id.journal -> navigator.replaceFragment(JournalPage())
+                R.id.journal -> navigator.replaceFragment(JournalPage(navigator))
                 else -> {
                 }
             }
