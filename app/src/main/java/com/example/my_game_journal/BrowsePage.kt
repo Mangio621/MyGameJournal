@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
  * Use the [BrowsePage.newInstance] factory method to
  * create an instance of this fragment.
  */
-class BrowsePage(private val fragmentReplacer: (fragment: Fragment) -> Unit) : Fragment() {
+class BrowsePage(private val fragmentNavigator: FragmentNavigator) : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -36,7 +36,7 @@ class BrowsePage(private val fragmentReplacer: (fragment: Fragment) -> Unit) : F
             if(gameList != null) {
                 val browseList = view.findViewById<RecyclerView>(R.id.browseList)
                 browseList.adapter = PublicGameListAdapter(gameList) { game ->
-                    fragmentReplacer.invoke(PublicGameDetailPage(game))
+                    fragmentNavigator.addFragment(PublicGameDetailPage(fragmentNavigator, game))
                 }
                 browseList.layoutManager = LinearLayoutManager(context)
             }

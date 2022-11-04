@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameInfoItem"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/rounded_corner_list"
+    android:elevation="10dp"
+    android:orientation="vertical"
+    android:paddingStart="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0"
+                android:fontFamily="@font/montserratregular"
+                android:text="Your Journal For"
+                android:textColor="@color/white"
+                android:textSize="6pt" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_weight="0"
+                app:srcCompat="@drawable/ic_baseline_bookmark_24" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/journalInfoName"
+            android:layout_width="376dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:fontFamily="@font/montserratregular"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="10pt" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0">
+
+            <ImageView
+                android:id="@+id/journalInfoCover"
+                android:layout_width="107dp"
+                android:layout_height="98dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="0"
+                android:elevation="5dp"
+                android:scaleType="fitXY"
+
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserratregular"
+                    android:text="Review Date"
+                    android:textColor="@color/white"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:id="@+id/journalInfoDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/montserratregular"
+                    android:text="TextView"
+                    android:textColor="@color/app_select"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/montserratregular"
+                    android:text="Your Rating"
+                    android:textColor="@color/white"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:id="@+id/journalInfoRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dp"
+                    android:fontFamily="@font/montserratregular"
+                    android:text="TextView"
+                    android:textColor="@color/app_select"
+                    android:textSize="6pt" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="80dp"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0"
+                    android:fontFamily="@font/montserratregular"
+                    android:text="Game is"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="6pt" />
+
+                <TextView
+                    android:id="@+id/journalInfoCompletion"
+                    android:layout_width="80dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rounded_corner_list"
+                    android:backgroundTint="@color/unfinished"
+                    android:fontFamily="@font/montserratsemibold"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="UNFINISHED"
+                    android:textColor="#FFFFFF"
+                    android:textSize="5pt" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

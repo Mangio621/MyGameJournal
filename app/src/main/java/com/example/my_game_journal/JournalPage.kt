@@ -7,6 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class JournalPage : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,12 +20,23 @@ class JournalPage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_journal_page, container, false)
     }
 
-    override fun onPause() {
-        Log.i("API", "paused")
-        super.onPause()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val journalManager = JournalManager(activity as FragmentActivity)
+        val journalList = journalManager.getPersistentGameList()
+
+        if(journalList != null) {
+            val journalRecyclerView = view.findViewById<RecyclerView>(R.id.journalList)
+            journalRecyclerView.adapter = JournalGameListAdapter(journalList) { game ->
+            }
+            journalRecyclerView.layoutManager = LinearLayoutManager(context)
+        }
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

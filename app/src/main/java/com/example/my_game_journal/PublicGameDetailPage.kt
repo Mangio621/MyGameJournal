@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentManager
 import com.squareup.picasso.Picasso
 
 // TODO: Rename parameter arguments, choose names that match
@@ -19,7 +22,7 @@ import com.squareup.picasso.Picasso
  * Use the [PublicGameDetailPage.newInstance] factory method to
  * create an instance of this fragment.
  */
-class PublicGameDetailPage(private val gameInfo: PublicGameInfo) : Fragment() {
+class PublicGameDetailPage(private val fragmentNavigator: FragmentNavigator, private val gameInfo: PublicGameInfo) : Fragment() {
     // TODO: Rename and change types of parameters
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +43,26 @@ class PublicGameDetailPage(private val gameInfo: PublicGameInfo) : Fragment() {
         val gameReleaseDate = view.findViewById<TextView>(R.id.publicGameReleaseDate)
         val gamePlatforms = view.findViewById<TextView>(R.id.publicGamePlatforms)
         val gameRating = view.findViewById<TextView>(R.id.publicGameRating)
-        Picasso.get().load("https:" + gameInfo.getCoverImgUrlSpecificSize("t_720p")).into(gameCover)
+        val addGameBtn = view.findViewById<Button>(R.id.addGameBtn)
+
+        if(gameInfo.cover != null) {
+            Picasso.get()
+                .load("https:" + gameInfo.getCoverImgUrlSpecificSize("t_720p"))
+                .into(gameCover)
+        } else {
+            gameCover.setImageResource(R.drawable.ic_baseline_videogame_asset_24)
+        }
         gameTitle.text = gameInfo.name
         gameDescription.text = if(gameInfo.summary != null) gameInfo.summary else "This game has no description"
         gameReleaseDate.text = if(gameInfo.release_dates != null) gameInfo.getReadableReleaseDate() else "This game hasn't been released yet"
         gamePlatforms.text = if(gameInfo.platforms != null) gameInfo.getStringListOfPlatforms() else "No platforms recorded"
         gameRating.text = if(gameInfo.rating != null) gameInfo.getWholeRating().toString() + "/100" else "This game has no reviews yet"
+
+        addGameBtn.setOnClickListener {
+            val journalManager = JournalManager(activity as FragmentActivity)
+            journalManager.addToPersistentGameList(JournalGameInfo(gameInfo.id ?: 0, gameInfo.name ?: "", gameInfo.getCoverImgUrlSpecificSize("t_720p")))
+            fragmentNavigator.replaceFragment(JournalPage())
+        }
         super.onViewCreated(view, savedInstanceState)
     }
 }

@@ -1,13 +1,11 @@
 package com.example.my_game_journal
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
@@ -47,7 +45,9 @@ class PublicGameListAdapter(private val gameList: List<PublicGameInfo>, val game
                 releaseText.text = "Not Released Yet"
             }
             if(game.cover != null) {
-                Picasso.get().load("https:" + game.getCoverImgUrlSpecificSize("t_cover_big")).into(coverImg)
+                Picasso.get()
+                    .load("https:" + game.getCoverImgUrlSpecificSize("t_cover_big"))
+                    .into(coverImg)
             } else {
                 coverImg.setImageResource(R.drawable.ic_baseline_videogame_asset_24)
             }

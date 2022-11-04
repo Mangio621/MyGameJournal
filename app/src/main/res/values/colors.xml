@@ -10,4 +10,6 @@
     <color name="page_color">#191919</color>
     <color name="darker_grey">#101010</color>
     <color name="app_select">#7D90FF</color>
+    <color name="finished">#3CB851</color>
+    <color name="unfinished">#E1B530</color>
 </resources>

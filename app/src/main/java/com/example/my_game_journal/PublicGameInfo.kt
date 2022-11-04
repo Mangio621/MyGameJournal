@@ -1,32 +1,9 @@
 package com.example.my_game_journal
 
-import android.os.Parcel
-import android.os.Parcelable
 import android.util.Log
-import com.google.gson.annotations.SerializedName
-import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
 import kotlin.math.round
 
-@Parcelize
-data class PublicGameInfoCover(
-    val id: Int,
-    val url: String
-) : Parcelable
-
-@Parcelize
-data class PublicGameInfoPlatform(
-    val id: Int,
-    val name: String
-) : Parcelable
-
-@Parcelize
-data class PublicGameInfoReleaseDate(
-    val id: Int,
-    val date: Int
-) : Parcelable
-
-@Parcelize
 data class PublicGameInfo(
     val id: Int? = null,
     val cover: PublicGameInfoCover? = null,
@@ -35,7 +12,22 @@ data class PublicGameInfo(
     val rating: Double? = null,
     val release_dates: List<PublicGameInfoReleaseDate>? = null,
     val summary: String? = null
-) :Parcelable {
+) {
+    inner class PublicGameInfoCover(
+        val id: Int,
+        val url: String
+    )
+
+    inner class PublicGameInfoPlatform(
+        val id: Int,
+        val name: String
+    )
+
+    inner class PublicGameInfoReleaseDate(
+        val id: Int,
+        val date: Int
+    )
+
     fun getCoverImgUrlSpecificSize(size: String): String {
         var newUrl = ""
         if(cover != null) {
