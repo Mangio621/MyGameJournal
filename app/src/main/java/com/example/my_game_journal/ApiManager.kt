@@ -2,6 +2,7 @@ package com.example.my_game_journal
 
 import android.util.JsonReader
 import android.util.Log
+import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.core.FuelError
 import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.result.Result
@@ -41,7 +42,7 @@ class ApiManager {
     /**
      * This function fetches a list of games from the games endpoint without searching.
      */
-    fun fetchGameDetails(query: String, callback: (gameList: List<PublicGameInfo>?) -> Unit) {
+    fun fetchGameDetails(query: String, callback: (gameList: List<PublicGameInfo>?, postResult: Result<String, FuelError>) -> Unit) {
         val url = "https://api.igdb.com/v4/games"
         getAccessToken { auth ->
             val httpAsync = url.httpPost()
@@ -57,11 +58,11 @@ class ApiManager {
                             val gson = Gson()
                             // Maps json data to a list of objects
                             val list =  gson.fromJson(data, Array<PublicGameInfo>::class.java).toList()
-                            callback.invoke(list)
+                            callback.invoke(list, result)
                         }
                         is Result.Failure -> {
                             val error = result.error.toString()
-                            callback.invoke(null)
+                            callback.invoke(null, result)
                         }
                     }
                 }
@@ -71,7 +72,7 @@ class ApiManager {
     /**
      * This function fetches a list of games from the search endpoint and uses the API's search query system
      */
-    fun searchForGameDetails(query: String, callback: (gameList: List<PublicGameInfo>?) -> Unit) {
+    fun searchForGameDetails(query: String, callback: (gameList: List<PublicGameInfo>?, postResult: Result<String, FuelError>) -> Unit) {
         val url = "https://api.igdb.com/v4/search"
         getAccessToken { auth ->
             val httpAsync = url.httpPost()
@@ -95,11 +96,11 @@ class ApiManager {
                             }
                             // Sort List as search endpoint doesn't support sort queries
                             val sortedMutableListOfGames = mutableListOfGames.sortedWith(compareByDescending{ it.rating })
-                            callback.invoke(sortedMutableListOfGames)
+                            callback.invoke(sortedMutableListOfGames, result)
                         }
                         is Result.Failure -> {
                             val error = result.error.toString()
-                            callback.invoke(null)
+                            callback.invoke(null, result)
                         }
                     }
                 }

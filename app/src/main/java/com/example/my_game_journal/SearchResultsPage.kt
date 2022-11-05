@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.kittinunf.result.Result
 
 /**
  * This fragment handles the functionality of displaying the game results from the search query
@@ -32,7 +34,7 @@ class SearchResultsPage(private val fragmentNavigator: FragmentNavigator, privat
         searchQueryLabel.text = "For \"${query}\""
         val apiManager = ApiManager()
         // Begin the search with the query retrieved from user input
-        apiManager.searchForGameDetails(query) { gameList ->
+        apiManager.searchForGameDetails(query) { gameList, result ->
             // Get rid of loading animation when done
             view.findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
             if (gameList != null) {
@@ -45,6 +47,10 @@ class SearchResultsPage(private val fragmentNavigator: FragmentNavigator, privat
                 searchQueryMessageLabel.text = "Returned ${gameList.count()} results"
             } else {
                 searchQueryMessageLabel.text = "Returned 0 results"
+                if(result is Result.Failure) {
+                    val msg = "Failed to fetch game data. Make sure you're connected to the internet."
+                    Toast.makeText(context, msg, Toast.LENGTH_LONG).show()
+                }
             }
         }
         super.onViewCreated(view, savedInstanceState)
