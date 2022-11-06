@@ -11,7 +11,7 @@
         android:id="@+id/deleteJournalName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Journal Name"
+        android:text="Delete?"
         android:textColor="@color/white"
         android:fontFamily="@font/montserratsemibold"
         android:textAlignment="center"
